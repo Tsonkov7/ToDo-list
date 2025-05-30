@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+h1 {
+  font-size: 1.875rem; /* equivalent to text-3xl */
+  
+}
