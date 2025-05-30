@@ -1,15 +1,11 @@
-import React, { Fragment,useEffect,useState } from 'react';
+import React, { Fragment,useContext,useEffect } from 'react';
 import axios from "axios";
 import EditTodo from './EditTodo';
+import { TodoContext, type Todo } from '../context/TodoContext';
 
-type Todo = {
-    todo_id: number;
-    description: string;
-};
 
 const ListTodo: React.FC = () => {
-    const [todos, setTodos] = useState([]);
-
+    const {todos, setTodos}= useContext(TodoContext)
 
     const getTodos = async () => {
         try {
