@@ -8,8 +8,8 @@ function App() {
   return (
     <>
     <Fragment>
-    <InputTodo/>
-    <ListTodo/>
+      <InputTodo/>
+      <ListTodo/>
     </Fragment>
     </>
   )
