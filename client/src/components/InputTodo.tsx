@@ -1,16 +1,25 @@
 import React, { Fragment } from 'react';
 import axios from 'axios';
+import { TodoContext } from '../context/TodoContext';
 
 const InputTodo = () => { 
-    const [description, setDescription] = React.useState<string>("");  
+    const {setTodos} = React.useContext(TodoContext);
+    const [description, setDescription] = React.useState<string>("");
+
    const onSubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); 
     try {
       const body = { description };
-      await axios.post("http://localhost:5000/todos", body, {
+      const response = await axios.post("http://localhost:5000/todos", body, {
         headers: { "Content-Type": "application/json" },
       });
-      window.location.href = "/";
+
+            // window.location.href = "/";
+
+      setTodos((prevTodos) => [
+        ...prevTodos, 
+        { todo_id: response.data.id, description }, 
+      ]);
     } catch (err) {
       console.error(err);
     }
