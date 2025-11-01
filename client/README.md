@@ -1,54 +1,50 @@
-# React + TypeScript + Vite
+To-Do List App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+    A full-stack task management application built with React, Node.js, Express, and PostgreSQL.
+    It allows users to create, read, update, and delete tasks with a responsive interface and a RESTful backend.
 
-Currently, two official plugins are available:
+Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+    Add, edit, and delete tasks
+    View all tasks in a clean and responsive UI
+    Persistent data storage using PostgreSQL
+    Built with React Context API for global state management
+    RESTful API built with Express
+    Modern styling with Tailwind CSS
 
-## Expanding the ESLint configuration
+Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Frontend:React, Context API, Tailwind CSS
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+Backend:Node.js, Express, PostgreSQL
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Tools:Git, VS Code, Postman
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+git clone https://github.com/Tsonkov7/ToDo-list
+cd ToDo-List
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+cd server
+npm install
+
+.env
+PORT=5000
+PG_USER=postgres
+PG_PASSWORD=yourpassword
+PG_HOST=localhost
+PG_PORT=5432
+PG_DATABASE=perntodo
+
+nodemon index.js
+
+sql
+CREATE DATABASE perntodo;
+
+CREATE TABLE todo (
+todo_id SERIAL PRIMARY KEY,
+description VARCHAR(255),
+created_at TIMESTAMP DEFAULT NOW()
+);
+
+cd client
+npm install
+npm run dev
